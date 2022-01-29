@@ -38,11 +38,17 @@ class _DOB extends State<DOB> {
         child: TextField(
           controller: dateinput, //editing controller of this TextField
           decoration: InputDecoration(
-              //icon of text field
+              fillColor: Color.fromRGBO(0, 0, 0, 0.4),
+              filled: true,
               labelText: "Enter Date",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(3.0),
-              )),
+              ),
+            labelStyle: new TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+            ),
+          ),
           readOnly: true, //set it true, so that user will not able to edit text
           onTap: () async {
             DateTime pickedDate = await showDatePicker(
@@ -266,10 +272,16 @@ class MyForm extends State<Myform1> {
                             padding: EdgeInsets.all(5),
                             child: TextFormField(
                               decoration: InputDecoration(
+                                fillColor: Color.fromRGBO(0, 0, 0, 0.4),
+                                filled: true,
                                 labelText: "Name",
                                 hintText: "Enter Your Name",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(3.0),
+                                ),
+                                labelStyle: new TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
                                 ),
                               ),
                             ),
@@ -286,7 +298,6 @@ class MyForm extends State<Myform1> {
 
                           Container(
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 const Padding(
@@ -303,8 +314,8 @@ class MyForm extends State<Myform1> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    padding: EdgeInsets.all(3),
                                     decoration: BoxDecoration(
+                                      color: Color.fromRGBO(0, 0, 0, 0.4),
                                       border: Border.all(
                                         color: Colors.black,
                                       ),
@@ -323,6 +334,10 @@ class MyForm extends State<Myform1> {
                                         ),
                                         const Text(
                                           "Male",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -331,8 +346,8 @@ class MyForm extends State<Myform1> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    padding: EdgeInsets.all(3),
                                     decoration: BoxDecoration(
+                                      color: Color.fromRGBO(0, 0, 0, 0.4),
                                       border: Border.all(
                                         color: Colors.black,
                                       ),
@@ -351,6 +366,10 @@ class MyForm extends State<Myform1> {
                                         ),
                                         const Text(
                                           "Female",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -359,8 +378,8 @@ class MyForm extends State<Myform1> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    padding: EdgeInsets.all(3),
                                     decoration: BoxDecoration(
+                                      color: Color.fromRGBO(0, 0, 0, 0.4),
                                       border: Border.all(
                                         color: Colors.black,
                                       ),
@@ -379,6 +398,10 @@ class MyForm extends State<Myform1> {
                                         ),
                                         const Text(
                                           "Other",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -394,8 +417,8 @@ class MyForm extends State<Myform1> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
-                                padding: EdgeInsets.all(3),
                                 decoration: BoxDecoration(
+                                  color: Color.fromRGBO(0, 0, 0, 0.4),
                                   border: Border.all(
                                     color: Colors.black,
                                   ),
@@ -408,17 +431,27 @@ class MyForm extends State<Myform1> {
                                       DropdownButton<String>(
                                         value: dropdownvalue,
                                         icon: Icon(Icons.keyboard_arrow_down),
-                                        items: status.map((String status) {
+                                        items: status.map(
+                                          (String status) {
                                             return DropdownMenuItem<String>(
                                               value: status,
-                                              child: Text(status),
+                                              child: Text(
+                                                  status,
+                                                /*
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 14,
+                                                ),
+                                  //WHILE ADDING THIS COMMENT IN THE CODE PROBLEM OCCURED.
+                                                */
+                                              ),
                                             );
                                           },
                                         ).toList(),
                                         onChanged: (String newValue) {
                                           setState(() {
-                                              this.dropdownvalue = newValue;
-                                            });
+                                            this.dropdownvalue = newValue;
+                                          });
                                         },
                                       ),
                                     ],
@@ -434,6 +467,8 @@ class MyForm extends State<Myform1> {
                             child: Row(
                               children: [
                                 Checkbox(
+                                  activeColor: Colors.white,
+                                  checkColor: Colors.black,
                                   value: _checkBoxValue,
                                   onChanged: (value) {
                                     setState(() {
@@ -443,6 +478,10 @@ class MyForm extends State<Myform1> {
                                 ),
                                 const Text(
                                   "Please accept our Terms and conditions",
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                  ),
                                 ),
                               ],
                             ),
@@ -460,7 +499,7 @@ class MyForm extends State<Myform1> {
                                     child: const Text("Next"),
                                     style: TextButton.styleFrom(
                                       primary: Colors.black,
-                                      backgroundColor: Colors.yellow,
+                                      backgroundColor: Color(0xffffcc00),
                                       onSurface: Colors.grey,
                                       side: const BorderSide(
                                         width: 1,
@@ -490,7 +529,6 @@ class MyForm extends State<Myform1> {
                           ),
 
                           /*THIS CONTAINER IS FOR PRECISELY WEB SITE .*/
-
                         ],
                       ),
                     ),
