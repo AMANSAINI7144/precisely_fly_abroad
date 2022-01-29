@@ -24,40 +24,41 @@ class DOB extends StatefulWidget {
 
 class _DOB extends State<DOB> {
   TextEditingController dateinput = TextEditingController();
-  //text editing controller for text field
 
   @override
   void initState() {
-    dateinput.text = ""; //set the initial value of text field
+    dateinput.text = "";
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Center(
-            child: TextField(
-      controller: dateinput, //editing controller of this TextField
-      decoration: InputDecoration(
-          //icon of text field
-          labelText: "Enter Date",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2.0),
-          )),
-      readOnly: true, //set it true, so that user will not able to edit text
-      onTap: () async {
-        DateTime pickedDate = await showDatePicker(
-          context: context, initialDate: DateTime.now(),
-          firstDate: DateTime(
-              2000), //DateTime.now() - not to allow to choose before today.
-          lastDate: DateTime(2101),
-        ); //pickedDate output format => 2021-03-10 00:00:00.000
-        String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-        setState(() {
-          dateinput.text = formattedDate; //set output date to TextField value.
-        });
-      },
-    )));
+      child: Center(
+        child: TextField(
+          controller: dateinput, //editing controller of this TextField
+          decoration: InputDecoration(
+              //icon of text field
+              labelText: "Enter Date",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(3.0),
+              )),
+          readOnly: true, //set it true, so that user will not able to edit text
+          onTap: () async {
+            DateTime pickedDate = await showDatePicker(
+              context: context,
+              initialDate: DateTime.now(),
+              firstDate: DateTime(2000),
+              lastDate: DateTime(2101),
+            );
+            String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+            setState(() {
+              dateinput.text = formattedDate;
+            });
+          },
+        ),
+      ),
+    );
   }
 }
 
@@ -65,10 +66,10 @@ class MyForm extends State<Myform1> {
   TextEditingController dateinput = TextEditingController();
   int _value = 1;
   bool _checkBoxValue = false;
-  String dropdownvalue = 'Martial Status';
-  var items = [
+  String dropdownvalue = "Martial Status";
+  var status = [
     "Martial Status",
-    'Married',
+    "Married",
     "Unmarried",
     "Separated",
     "Divorced",
@@ -102,7 +103,9 @@ class MyForm extends State<Myform1> {
           appBar: AppBar(
               leading: const Padding(
                 padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
-                // child: Image(image: AssetImage('assets/appbarimage.png'),),
+                child: Image(
+                  image: AssetImage('assets/appbarimage.png'),
+                ),
               ),
               titleSpacing: 0,
               title: Column(
@@ -153,26 +156,22 @@ class MyForm extends State<Myform1> {
               ),
               actions: <Widget>[
                 GestureDetector(
-                    onTap: () {},
-                    child: const Icon(
-                        Icons.facebook
-                    ),
+                  onTap: () {},
+                  child: const Icon(Icons.facebook),
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                GestureDetector(onTap: () {},
-                    child: const Icon(
-                        Icons.camera
-                    ),
+                GestureDetector(
+                  onTap: () {},
+                  child: const Icon(Icons.camera),
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                GestureDetector(onTap: () {},
-                    child: const Icon(
-                        Icons.search
-                    ),
+                GestureDetector(
+                  onTap: () {},
+                  child: const Icon(Icons.search),
                 ),
                 const SizedBox(
                   width: 10,
@@ -187,17 +186,20 @@ class MyForm extends State<Myform1> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                        child: Center(
-                          child: Text(
-                            "\n PRECISELY",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 38,
-                            ),
+                      child: Center(
+                        child: Text(
+                          "\n PRECISELY",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 38,
                           ),
                         ),
+                      ),
                     ),
+
+                    //MAIN BIG PRECISELY.
+
                     Container(
                       child: Center(
                         child: Text(
@@ -210,184 +212,250 @@ class MyForm extends State<Myform1> {
                         ),
                       ),
                     ),
+
+                    //Preparing ... programs TEXT.
+
                     Container(
                       child: Center(
                         child: Text(
                           "\n- Yours Truly",
                           style: TextStyle(
-                            fontFamily: 'Pacifico',
+                            fontFamily: 'Caveat',
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 22,
                           ),
                         ),
                       ),
                     ),
+
+                    //YOUR TRULY TEXT.
+
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "\n\n1 of 7",
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "\n\n1 of 7",
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                Text(
+                                  'Please fill with your details',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          /*THIS CONTAINER CONTAINS 1 0F 7 TO PLEASE FILL WITH YOUR DETAILS*/
+
+                          Container(
+                            padding: EdgeInsets.all(5),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: "Name",
+                                hintText: "Enter Your Name",
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(3.0),
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          /*THIS CONTAINER IS FOR NAME .*/
+
+                          Container(
+                            padding: EdgeInsets.all(5),
+                            child: DOB(),
+                          ),
+
+                          /*THIS CONTAINER IS FOR DATE OF BIRTH .*/
+
+                          Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                const Padding(
+                                  padding: EdgeInsets.all(5.0),
+                                  child: Text(
+                                    'Select Your Gender',
                                     style: TextStyle(
                                       color: Colors.grey,
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14,
                                     ),
                                   ),
-                                  Text(
-                                    'Please fill with your details',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 15),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    padding: EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.black,
+                                      ),
+                                      borderRadius: BorderRadius.circular(3.0),
+                                    ),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                          value: 1,
+                                          groupValue: _value,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              _value = value as int;
+                                            });
+                                          },
+                                        ),
+                                        const Text(
+                                          "Male",
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ],
-                              ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    padding: EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.black,
+                                      ),
+                                      borderRadius: BorderRadius.circular(3.0),
+                                    ),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                          value: 2,
+                                          groupValue: _value,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              _value = value as int;
+                                            });
+                                          },
+                                        ),
+                                        const Text(
+                                          "Female",
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    padding: EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.black,
+                                      ),
+                                      borderRadius: BorderRadius.circular(3.0),
+                                    ),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Radio(
+                                          value: 3,
+                                          groupValue: _value,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              _value = value as int;
+                                            });
+                                          },
+                                        ),
+                                        const Text(
+                                          "Other",
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            Container(
-                              padding: EdgeInsets.all(5),
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  labelText: "Name",
-                                  hintText: "Enter Your Name",
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(2.0),
+                          ),
+
+                          /*THIS CONTAINER IS FOR GENDER .*/
+
+                          Container(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                padding: EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.black,
+                                  ),
+                                  borderRadius: BorderRadius.circular(3.0),
+                                ),
+                                // for including border around the martial status.
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      DropdownButton<String>(
+                                        value: dropdownvalue,
+                                        icon: Icon(Icons.keyboard_arrow_down),
+                                        items: status.map((String status) {
+                                            return DropdownMenuItem<String>(
+                                              value: status,
+                                              child: Text(status),
+                                            );
+                                          },
+                                        ).toList(),
+                                        onChanged: (String newValue) {
+                                          setState(() {
+                                              this.dropdownvalue = newValue;
+                                            });
+                                        },
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.all(5),
-                              child: DOB(),
+                          ),
+
+                          /*THIS CONTAINER IS FOR MARTIAL STATUS*/
+
+                          Container(
+                            child: Row(
+                              children: [
+                                Checkbox(
+                                  value: _checkBoxValue,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _checkBoxValue = value;
+                                    });
+                                  },
+                                ),
+                                const Text(
+                                  "Please accept our Terms and conditions",
+                                ),
+                              ],
                             ),
-                            Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  const Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Text(
-                                      'Select Your Gender',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Radio(
-                                        value: 1,
-                                        groupValue: _value,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            _value = value as int;
-                                          });
-                                        },
-                                      ),
-                                      const Text("Male"),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Radio(
-                                        value: 2,
-                                        groupValue: _value,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            _value = value as int;
-                                          });
-                                        },
-                                      ),
-                                      const Text("Female"),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Radio(
-                                        value: 3,
-                                        groupValue: _value,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            _value = value as int;
-                                          });
-                                        },
-                                      ),
-                                      const Text("Other"),
-                                    ],
-                                  ),
-                                  // may bew work
-                                  Row(
-                                    children: [
-                                      Checkbox(
-                                        value: _checkBoxValue,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            _checkBoxValue = value;
-                                          });
-                                        },
-                                      ),
-                                      const Text(
-                                          "Please accept our Terms and conditions"),
-                                    ],
-                                  ),
-                                  // ttll then here may be work
-                                ],
-                              ),
-                            ),
-                            Container(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  DropdownButton(
-                                    value: dropdownvalue,
-                                    icon: Icon(Icons.keyboard_arrow_down),
-                                    items: items.map((String items) {
-                                      return DropdownMenuItem(
-                                          value: items, child: Text(items));
-                                    }).toList(),
-                                    onChanged: (String newValue) {
-                                      setState(() {
-                                        dropdownvalue = newValue;
-                                      });
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
+                          ),
+
+                          /*THIS CONTAINER IS FOR CHECKBOX AT THE END .*/
+
+                          Container(
+                            child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: <Widget>[
-                                  // TextButton(
-                                  //   child: const Text("Prev"),
-                                  //   style: TextButton.styleFrom(
-                                  //     primary: Colors.black,
-                                  //     backgroundColor: Colors.blueGrey,
-                                  //     onSurface: Colors.grey,
-                                  //     side: const BorderSide(
-                                  //       width: 1,
-                                  //       color: Colors.black12,
-                                  //     ),
-                                  //   ),
-                                  //   onPressed: ()=>{
-                                  //     print("prev Pressed")
-                                  //   },
-                                  // ),
-                                  // const SizedBox(
-                                  //   width: 3.0,
-                                  // ),
                                   TextButton(
                                     child: const Text("Next"),
                                     style: TextButton.styleFrom(
@@ -399,26 +467,33 @@ class MyForm extends State<Myform1> {
                                         color: Colors.black12,
                                       ),
                                     ),
-                                    onPressed: () => {print("Next Pressed")},
+                                    onPressed: () => {
+                                      print("Next Pressed"),
+                                    },
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              height: 10,
+                          ),
+
+                          /*THIS CONTAINER IS TO MOVE TO NEXT PAGE ie:NEXT BUTTON .*/
+
+                          Container(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: InkWell(
+                                child: new Text('Precisely Website'),
+                                onTap: () =>
+                                    launch('https://www.precisely.co.in/'),
+                              ),
                             ),
-                            InkWell(
-                                child: new Text(
-                                    'Precisely Website'
-                                ),
-                                onTap: () => launch(
-                                    'https://www.precisely.co.in/'
-                                ),
-                            ),
-                          ],
+                          ),
+
+                          /*THIS CONTAINER IS FOR PRECISELY WEB SITE .*/
+
+                        ],
                       ),
                     ),
-
                   ],
                 ),
               ),
