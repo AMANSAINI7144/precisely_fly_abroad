@@ -2,8 +2,6 @@ import 'package:easy_gradient_text/easy_gradient_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:intl/intl.dart';
-
 
 void main() {
   runApp(Page3());
@@ -13,61 +11,6 @@ class Page3 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return MyForm();
-  }
-}
-
-
-class DOB extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _DOB();
-  }
-}
-
-class _DOB extends State<DOB> {
-  TextEditingController dateinput = TextEditingController();
-
-  @override
-  void initState() {
-    dateinput.text = "";
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            "When do you plan to start your studies",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-          TextField(
-            controller: dateinput, //editing controller of this TextField
-            decoration: InputDecoration(
-              fillColor: Color.fromRGBO(0, 0, 0, 0.4),
-              filled: true,
-            ),
-            readOnly: true, //set it true, so that user will not able to edit text
-            onTap: () async {
-              DateTime pickedDate = await showDatePicker(
-                context: context,
-                initialDate: DateTime.now(),
-                firstDate: DateTime(2000),
-                lastDate: DateTime(2101),
-              );
-              String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-              setState(() {
-                dateinput.text = formattedDate;
-              });
-            },
-          ),
-        ],
-      ),
-    );
   }
 }
 
@@ -239,7 +182,7 @@ class MyForm extends State<Page3> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "\n\n7 of 7",
+                                  "\n\n3 of 7",
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w500,
@@ -247,7 +190,7 @@ class MyForm extends State<Page3> {
                                   ),
                                 ),
                                 Text(
-                                  "Supplementary questions",
+                                  "Please fill your Work history",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.white,
@@ -258,39 +201,57 @@ class MyForm extends State<Page3> {
                             ),
                           ),
 
-                          /*THIS CONTAINER CONTAINS 7 0F 7 TO PLEASE FILL WITH YOUR DETAILS*/
+                          /*THIS CONTAINER CONTAINS 3 0F 7 TO PLEASE FILL WITH YOUR DETAILS*/
 
                           SizedBox(
-                            height: 20,
+                            height: 30,
                           ),
 
-                          Container(
-                            padding: EdgeInsets.all(5),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                fillColor: Color.fromRGBO(0, 0, 0, 0.4),
-                                filled: true,
-                                hintText: "Do you have any country preference",
-                                hintStyle: TextStyle(
-                                    color: Colors.white,
-                                  fontSize: 14,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                "Company",
+                                style: TextStyle(
+                                  color: Colors.white,
                                 ),
                               ),
-                            ),
+                              Text(
+                                "Position",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
                           ),
 
-                          /*THIS CONTAINER IS FOR NAME .*/
-
-                          Container(
-                            padding: EdgeInsets.all(5),
-                            child: DOB(),
-                          ),
-
-                          /*THIS CONTAINER IS FOR DATE OF BIRTH .*/
+                          /*THIS ROW IS FOR COMPANY AND POSITION*/
 
                           SizedBox(
-                            height: 20,
+                            height: 60,
                           ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              TextButton(
+                                child: const Text("Add"),
+                                style: TextButton.styleFrom(
+                                  primary: Colors.white,
+                                  backgroundColor: Color(0xff0d6efd),
+                                  side: const BorderSide(
+                                    width: 1,
+                                    color: Colors.black12,
+                                  ),
+                                ),
+                                onPressed: () => {
+
+                                },
+                              ),
+                            ],
+                          ),
+
+                          /*THIS ROW IS FOR ADD*/
 
                           Container(
                             child: Row(
@@ -343,7 +304,7 @@ class MyForm extends State<Page3> {
                               children: [
                                 InkWell(
                                   child: new Text(
-                                      'Precisely Website',
+                                    'Precisely Website',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),

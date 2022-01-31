@@ -2,8 +2,6 @@ import 'package:easy_gradient_text/easy_gradient_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:intl/intl.dart';
-
 
 void main() {
   runApp(Page3());
@@ -13,61 +11,6 @@ class Page3 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return MyForm();
-  }
-}
-
-
-class DOB extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _DOB();
-  }
-}
-
-class _DOB extends State<DOB> {
-  TextEditingController dateinput = TextEditingController();
-
-  @override
-  void initState() {
-    dateinput.text = "";
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            "When do you plan to start your studies",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-          TextField(
-            controller: dateinput, //editing controller of this TextField
-            decoration: InputDecoration(
-              fillColor: Color.fromRGBO(0, 0, 0, 0.4),
-              filled: true,
-            ),
-            readOnly: true, //set it true, so that user will not able to edit text
-            onTap: () async {
-              DateTime pickedDate = await showDatePicker(
-                context: context,
-                initialDate: DateTime.now(),
-                firstDate: DateTime(2000),
-                lastDate: DateTime(2101),
-              );
-              String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-              setState(() {
-                dateinput.text = formattedDate;
-              });
-            },
-          ),
-        ],
-      ),
-    );
   }
 }
 
@@ -239,7 +182,7 @@ class MyForm extends State<Page3> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "\n\n7 of 7",
+                                  "\n\n5 of 7",
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontWeight: FontWeight.w500,
@@ -247,7 +190,7 @@ class MyForm extends State<Page3> {
                                   ),
                                 ),
                                 Text(
-                                  "Supplementary questions",
+                                  "Please enter your scores",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.white,
@@ -258,7 +201,23 @@ class MyForm extends State<Page3> {
                             ),
                           ),
 
-                          /*THIS CONTAINER CONTAINS 7 0F 7 TO PLEASE FILL WITH YOUR DETAILS*/
+                          /*THIS CONTAINER CONTAINS 5 0F 7 TO PLEASE FILL WITH YOUR DETAILS*/
+
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "\n\n*In case, you have not taken any of these test you may well enter an indicative expected scores between the allowed range",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
 
                           SizedBox(
                             height: 20,
@@ -270,26 +229,73 @@ class MyForm extends State<Page3> {
                               decoration: InputDecoration(
                                 fillColor: Color.fromRGBO(0, 0, 0, 0.4),
                                 filled: true,
-                                hintText: "Do you have any country preference",
-                                hintStyle: TextStyle(
-                                    color: Colors.white,
+                                labelText: "GRE Q (130-170 or 200-800)",
+                                labelStyle: new TextStyle(
+                                  color: Colors.white,
                                   fontSize: 14,
                                 ),
                               ),
                             ),
                           ),
 
-                          /*THIS CONTAINER IS FOR NAME .*/
+                          Container(
+                            padding: EdgeInsets.all(5),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                fillColor: Color.fromRGBO(0, 0, 0, 0.4),
+                                filled: true,
+                                labelText: "GRE V (130-170 or 200-800)",
+                                labelStyle: new TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
 
                           Container(
                             padding: EdgeInsets.all(5),
-                            child: DOB(),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                fillColor: Color.fromRGBO(0, 0, 0, 0.4),
+                                filled: true,
+                                labelText: "GRE W (0-6)",
+                                labelStyle: new TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
                           ),
 
-                          /*THIS CONTAINER IS FOR DATE OF BIRTH .*/
+                          Container(
+                            padding: EdgeInsets.all(5),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                fillColor: Color.fromRGBO(0, 0, 0, 0.4),
+                                filled: true,
+                                labelText: "TOEFL (0-120)",
+                                labelStyle: new TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
 
-                          SizedBox(
-                            height: 20,
+                          Container(
+                            padding: EdgeInsets.all(5),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                fillColor: Color.fromRGBO(0, 0, 0, 0.4),
+                                filled: true,
+                                labelText: "ILTS (1-10)",
+                                labelStyle: new TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
                           ),
 
                           Container(
@@ -343,7 +349,7 @@ class MyForm extends State<Page3> {
                               children: [
                                 InkWell(
                                   child: new Text(
-                                      'Precisely Website',
+                                    'Precisely Website',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),

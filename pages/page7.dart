@@ -272,7 +272,7 @@ class MyForm extends State<Page3> {
                                 filled: true,
                                 hintText: "Do you have any country preference",
                                 hintStyle: TextStyle(
-                                    color: Colors.white,
+                                  color: Colors.white,
                                   fontSize: 14,
                                 ),
                               ),
@@ -343,7 +343,7 @@ class MyForm extends State<Page3> {
                               children: [
                                 InkWell(
                                   child: new Text(
-                                      'Precisely Website',
+                                    'Precisely Website',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
